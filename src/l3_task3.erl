@@ -3,7 +3,7 @@
 -export([split/2]).
 
 split(BinText, Separator) ->
-  split(BinText, Separator, <<>>, []).
+  split(BinText, list_to_binary(Separator), <<>>, []).
 
 split(<<X, Rest/binary>>, <<X, Rest1/binary>> = Separator, Word, Acc) ->
   case check(Rest, Rest1) of
