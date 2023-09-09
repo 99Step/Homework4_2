@@ -67,7 +67,7 @@ decode_list(<<"'", Rest/binary>>, List, Flag) ->
 decode_list(<<",", Rest/binary>>, List, Flag) ->
   decode_list(Rest, List, Flag);
 decode_list(<<"]", Rest/binary>>, List, _) ->
-  {List, Rest};
+  {lists:reverse(List), Rest};
 decode_list(<<X, Rest/binary>>, List, Flag) when X =:= 10 orelse X =:= 32 ->
   decode_list(Rest, List, Flag).
 
